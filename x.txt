@@ -1,0 +1,8 @@
+        10 permit tcp 192.168.1.4/30 range 1 4 0.0.0.0/0 range 1 4
+        20 permit tcp 192.168.1.16/28 range 1 4 0.0.0.0/0 range 1 4
+        30 permit tcp 0.0.0.0/0 range 1 4 192.168.1.4/30 range 1 4
+        40 permit tcp 0.0.0.0/0 range 1 4 192.168.1.16/28 range 1 4
+        50 permit tcp 0.0.0.0/0 192.168.1.42/32
+        60 permit udp 192.168.0.0/32 range 1111 2222 10.0.0.0/8
+        70 permit udp 192.168.0.1/32 range 1111 2222 10.0.0.0/8		
+        80 permit udp 192.168.0.1/32 range 3333 4444 10.0.0.0/8
