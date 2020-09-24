@@ -40,69 +40,68 @@ So in case you're one of these mythical persons from interview questions who fil
 Running script for this ACL will show the following:
 >>>
 
-We are now replacing this line
-permit udp 192.168.0.0/32 ports 1111 2222 10.0.0.0/8 ports 0 0
-because it overlaps with this line:
-permit udp 192.168.0.1/32 ports 1111 2222 10.0.0.0/8 ports 0 0
-and are instead creating entry with network: 192.168.0.0 and mask: 31
-..We also delete this line:
-permit udp 192.168.0.1/32 ports 1111 2222 10.0.0.0/8 ports 0 0
-
-...
-Heres our ACL after deleting overlapping net entries
-permit tcp 192.168.1.4/30 ports 1 4 0.0.0.0/0 ports 1 4
-permit tcp 192.168.1.16/28 ports 1 4 0.0.0.0/0 ports 1 4
-permit tcp 0.0.0.0/0 ports 1 4 192.168.1.4/30 ports 1 4
-permit tcp 0.0.0.0/0 ports 1 4 192.168.1.16/28 ports 1 4
-permit tcp 0.0.0.0/0 ports 0 0 192.168.1.42/32 ports 0 0
-permit udp 192.168.0.0/31 ports 1111 2222 10.0.0.0/8 ports 0 0
-permit udp 192.168.0.1/32 ports 3333 4444 10.0.0.0/8 ports 0 0
-
-
-...
-This line is fragmented and will consume an additional TCAM entry
-After adding this line
-permit tcp 192.168.1.4/30 ports 1 4 0.0.0.0/0 ports 1 4
-we are now having total TCAM consumption of 10
-
-...
-This line is fragmented and will consume an additional TCAM entry
-After adding this line
-permit tcp 192.168.1.16/28 ports 1 4 0.0.0.0/0 ports 1 4
-we are now having total TCAM consumption of 20
-
-...
-This line is fragmented and will consume an additional TCAM entry
-After adding this line
-permit tcp 0.0.0.0/0 ports 1 4 192.168.1.4/30 ports 1 4
-we are now having total TCAM consumption of 30
-
-...
-This line is fragmented and will consume an additional TCAM entry
-After adding this line
-permit tcp 0.0.0.0/0 ports 1 4 192.168.1.16/28 ports 1 4
-we are now having total TCAM consumption of 40
-
-...
-After adding this line
-permit tcp 0.0.0.0/0 ports 0 0 192.168.1.42/32 ports 0 0
-we are now having total TCAM consumption of 41
-
-...
-This line is fragmented and will consume an additional TCAM entry
-After adding this line
-permit udp 192.168.0.0/31 ports 1111 2222 10.0.0.0/8 ports 0 0
-we are now having total TCAM consumption of 43
-
-...
-This line is fragmented and will consume an additional TCAM entry
-After adding this line
-permit udp 192.168.0.1/32 ports 3333 4444 10.0.0.0/8 ports 0 0
-we are now having total TCAM consumption of 45
-
-...
-Total TCAM usage = 46
-Including fragmented entries = 6
+We are now replacing this line  
+permit udp 192.168.0.0/32 ports 1111 2222 10.0.0.0/8 ports 0 0  
+because it overlaps with this line:  
+permit udp 192.168.0.1/32 ports 1111 2222 10.0.0.0/8 ports 0 0  
+and are instead creating entry with network: 192.168.0.0 and mask: 31  
+..We also delete this line:  
+permit udp 192.168.0.1/32 ports 1111 2222 10.0.0.0/8 ports 0 0  
+  
+...  
+Heres our ACL after deleting overlapping net entries  
+permit tcp 192.168.1.4/30 ports 1 4 0.0.0.0/0 ports 1 4  
+permit tcp 192.168.1.16/28 ports 1 4 0.0.0.0/0 ports 1 4  
+permit tcp 0.0.0.0/0 ports 1 4 192.168.1.4/30 ports 1 4  
+permit tcp 0.0.0.0/0 ports 1 4 192.168.1.16/28 ports 1 4  
+permit tcp 0.0.0.0/0 ports 0 0 192.168.1.42/32 ports 0 0  
+permit udp 192.168.0.0/31 ports 1111 2222 10.0.0.0/8 ports 0 0  
+permit udp 192.168.0.1/32 ports 3333 4444 10.0.0.0/8 ports 0 0  
+  
+...  
+This line is fragmented and will consume an additional TCAM entry  
+After adding this line  
+permit tcp 192.168.1.4/30 ports 1 4 0.0.0.0/0 ports 1 4  
+we are now having total TCAM consumption of 10  
+  
+...  
+This line is fragmented and will consume an additional TCAM entry  
+After adding this line  
+permit tcp 192.168.1.16/28 ports 1 4 0.0.0.0/0 ports 1 4  
+we are now having total TCAM consumption of 20  
+  
+...  
+This line is fragmented and will consume an additional TCAM entry  
+After adding this line  
+permit tcp 0.0.0.0/0 ports 1 4 192.168.1.4/30 ports 1 4  
+we are now having total TCAM consumption of 30  
+  
+...  
+This line is fragmented and will consume an additional TCAM entry  
+After adding this line  
+permit tcp 0.0.0.0/0 ports 1 4 192.168.1.16/28 ports 1 4  
+we are now having total TCAM consumption of 40  
+  
+...  
+After adding this line  
+permit tcp 0.0.0.0/0 ports 0 0 192.168.1.42/32 ports 0 0  
+we are now having total TCAM consumption of 41  
+  
+...  
+This line is fragmented and will consume an additional TCAM entry  
+After adding this line  
+permit udp 192.168.0.0/31 ports 1111 2222 10.0.0.0/8 ports 0 0  
+we are now having total TCAM consumption of 43  
+  
+...  
+This line is fragmented and will consume an additional TCAM entry  
+After adding this line  
+permit udp 192.168.0.1/32 ports 3333 4444 10.0.0.0/8 ports 0 0  
+we are now having total TCAM consumption of 45  
+  
+...  
+Total TCAM usage = 46  
+Including fragmented entries = 6  
 LOU usage = 2
 
 ## Usage
