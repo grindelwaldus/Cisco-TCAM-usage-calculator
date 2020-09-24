@@ -1,7 +1,7 @@
-# Cisco-TCAM-usage-calculator
+# Cisco-Nexus-TCAM-usage-calculator
 Calculator that estimates how much TCAM entries will be consumed by your ACL
 
-Recently I had a migration from a pair of good old Catalysts 6500 to VxLAN fabric of Nexus 92160 switches and while Catalysts seems to have some unbelieveable infinity TCAM space that was enough for 10 years of adding more and more of new VLANS and ACLs, Nexus' TCAM was exhausted faster than I pronounced T in TCAM (yeah, I'd like to put Doge and Cheems meme here). This is how I came witn this cheap and cheerful script.
+Recently I had a migration from a pair of good old Catalysts 6500 to VxLAN fabric of Nexus 92160 switches and while Catalysts seems to have some unbelieveable infinite TCAM space that was enough for 10 years of adding more and more of new VLANS and ACLs, Nexus' TCAM was exhausted faster than I pronounced T in TCAM (yeah, I'd like to put Doge and Cheems meme here). This is how I came witn this cheap and cheerful script.
 
 This script would be impossible without this article - https://www.pants.org/2017/02/qos-on-the-nexus-9k-estimating-tcam-usage-part-1/ - which decribes the logic behind TCAM calculation. If you're curious about how calculations are made, I suggest reading this.
 
