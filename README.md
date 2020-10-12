@@ -106,3 +106,4 @@ LOU usage = 2
 ## Usage
 
 Put your ACL contents in file named x.txt residing in the same directory with the script (just contents without the ACL name). Run the script.
+Note ACL should already be in NX-OS format. If your ACL is in IOS format, convert it first using this: https://github.com/grindelwaldus/Cisco-IOS-to-NXOS-ACL-converter
