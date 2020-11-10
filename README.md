@@ -1,5 +1,6 @@
 # Cisco-Nexus-TCAM-usage-calculator
 Calculator that estimates how much TCAM entries will be consumed by your ACL
+
 Note ACL should be in NX-OS format. If your ACL is in IOS format, convert it first using this: https://github.com/grindelwaldus/Cisco-IOS-to-NXOS-ACL-converter
 
 Recently I had a migration from a pair of good old Catalysts 6500 to VxLAN fabric of Nexus 92160 switches and while Catalysts seems to have some unbelieveable infinite TCAM space that was enough for 10 years of adding more and more of new VLANS and ACLs, Nexus' TCAM was exhausted faster than I pronounced T in TCAM (yeah, I'd like to put Doge and Cheems meme here). This is how I came witn this cheap and cheerful script.
